@@ -1,0 +1,14 @@
+<!-- scan.wxml -->
+<view class="container">
+  <camera device-position="back" flash="off" binderror="cameraError" style="width: 100%; height: 300px;"></camera>
+  <view class="button-area">
+  <button bindtap="scanAndParseCode">扫码充电</button>
+  </view>
+  <view class="status-area" wx:if="{{chargingStatus}}">
+  <text>充电中...</text>
+  </view>
+  <view class="control-area">
+  <button bindtap="startCharging" wx:if="{{!chargingStatus}}">开始充电</button>
+  <button bindtap="stopCharging" wx:if="{{chargingStatus}}">停止充电</button>
+  </view>
+</view>

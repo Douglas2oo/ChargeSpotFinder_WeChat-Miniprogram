@@ -1,0 +1,58 @@
+<!-- 用户列表选项 -->
+<scroll-view class='scbg' scroll-y='true'>
+  <view class="parent_catainer">
+    <!-- 头部 -->
+    <!-- style="background-image: url('/images/persons/mind_head_bg.jpg');" -->
+    <view class="container_head">
+      <image class="head_img" src="/images/头部4.jpg"></image>
+      <view class="head_pers_info" bindtap="getUser">
+        <view class="head_pic" animation="{{animationData}}">
+        <!-- 绑定头像图片，点击触发 getUser -->
+        <image class="head_pic_content" mode="aspectFit" src="{{userInfo.avatarUrl}}"></image>
+        </view>
+        <view class="inf_content" bindtap="getUser" animation="{{animationData}}">
+        <!-- 绑定用户名，点击触发 getUser -->
+        <text class="user_info">{{userInfo.nickName}}</text>
+        </view>
+      </view>
+    </view>
+ 
+    <view class="userItemListView">
+      <view class="my_priview_md" bindtap="myappointpage" animation="{{menuAnimation}}">
+        <image class="my_priview" src="/images/我的预约.jpg"></image>
+        <text>我的预约</text>
+        <view class="arrow"></view>
+      </view>
+      <view class="my_priview_md" bindtap="openmyorder" animation="{{menuAnimation}}">
+        <image class="my_priview" src="/images/我的订单.jpg"></image>
+        <text>我的订单</text>
+        <view class="arrow"></view>
+      </view>
+      <view class="my_priview_md" bindtap="mycollection" animation="{{menuAnimation}}">
+        <image class="my_priview" src="/images/我的收藏.jpg"></image>
+        <text>我的收藏</text>
+        <view class="arrow"></view>
+      </view>
+    </view>
+ 
+    <view class="userItemListView">
+      <view class="my_priview_md" bindtap="bind" animation="{{menuAnimation}}">
+        <image class="my_priview" src="/images/个人资料.jpg"></image>
+        <text>个人资料</text>
+        <view class="arrow"></view>
+      </view>
+      <view class="my_priview_md" bindtap="aboutus" animation="{{menuAnimation}}">
+        <image class="my_priview" src="/images/关于我们.jpg"></image>
+        <text>关于我们</text>
+        <view class="arrow"></view>
+      </view>
+      <view class="my_priview_md" bindtap="logout">
+        <image class="my_priview" src="/images/退出登录.jpg"></image>
+        <text>退出登录</text>
+        <view class="arrow"></view>
+      </view>
+    </view>
+ 
+    <view class="last_view"></view>
+  </view>
+</scroll-view>

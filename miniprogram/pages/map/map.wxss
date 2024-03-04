@@ -1,0 +1,9 @@
+/* 全屏时的样式，初始时不显示 */
+.full-screen-map {
+  width: 100vw; /* 视窗的100%宽度 */
+  height: 100vh; /* 视窗的100%高度 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}

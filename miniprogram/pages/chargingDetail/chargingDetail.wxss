@@ -1,0 +1,22 @@
+/* chargingDetail.wxss */
+.container {
+  padding: 20px;
+}
+
+.station-info {
+  margin-bottom: 20px;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.location,
+.price,
+.distance,
+.average-time,
+.cost-per-hour {
+  font-size: 14px;
+  color: #666;
+}

@@ -1,0 +1,27 @@
+<!-- 设置地图的初始容器大小 -->
+<view class="map-container" bindtap="toggleFullScreen">
+  <map
+  id="map"
+  longitude="{{longitude}}"
+  latitude="{{latitude}}"
+  scale="14"
+  markers="{{markers}}"
+  show-location
+  style="width: 100%; height: 100%;"
+  >
+  </map>
+</view>
+<!-- Charging station info card -->
+<view class="charging-info" bindtap="navigateToDetail">
+  <view class="charging-header">
+    <text>亿电邦科充电桩</text>
+    <text class="price">¥0.85/度</text>
+  </view>
+  <view class="charging-subheader">
+    <text>距离 | 1.4km | 优惠信息</text>
+  </view>
+  <view class="charging-details">
+    <text>平均充电2小时 | 每次充电0.17元/分钟</text>
+  </view>
+</view>
+<!-- 其他内容 -->

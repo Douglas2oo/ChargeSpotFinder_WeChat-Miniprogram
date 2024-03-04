@@ -1,0 +1,11 @@
+<!-- chargingDetail.wxml -->
+<view class="container">
+  <view class="station-info">
+  <view class="name">{{stationInfo.name}}</view>
+  <view class="location">{{stationInfo.location}}</view>
+  <view class="price">{{stationInfo.price}}</view>
+  <view class="distance">{{stationInfo.distance}}</view>
+  <view class="average-time">{{stationInfo.averageTime}}</view>
+  <view class="cost-per-hour">{{stationInfo.costPerHour}}</view>
+  </view>
+</view>

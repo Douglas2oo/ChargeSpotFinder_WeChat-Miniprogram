@@ -1,0 +1,40 @@
+/* 设置地图的初始样式 */
+.map-container {
+  width: 320px; /* 例如，宽300像素 */
+  height: 200px; /* 例如，高200像素 */
+  position: relative;
+  border: 1px solid #ddd; /* 可选，添加边框以便更清晰地看到地图的边界 */
+}
+/* 全屏时的样式，初始时不显示 */
+.full-screen-map {
+  width: 100vw; /* 视窗的100%宽度 */
+  height: 100vh; /* 视窗的100%高度 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+/* Styles for charging station info card */
+.charging-info {
+  padding: 10px;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+}
+
+.charging-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.price {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.charging-subheader, .charging-details {
+  color: #666;
+  font-size: 14px;
+}
+

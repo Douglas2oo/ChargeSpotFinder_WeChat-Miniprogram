@@ -1,0 +1,21 @@
+/* scan.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.button-area button {
+  width: 200px;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #1AAD19;
+  color: white;
+  border-radius: 5px;
+}
+
+.status-area {
+  margin: 10px 0;
+}
