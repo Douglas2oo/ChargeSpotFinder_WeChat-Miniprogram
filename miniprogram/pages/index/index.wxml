@@ -1,16 +1,3 @@
-<!-- 设置地图的初始容器大小 -->
-<view class="map-container" bindtap="toggleFullScreen">
-  <map
-  id="map"
-  longitude="{{longitude}}"
-  latitude="{{latitude}}"
-  scale="14"
-  markers="{{markers}}"
-  show-location
-  style="width: 100%; height: 100%;"
-  >
-  </map>
-</view>
 <!-- Charging station info card -->
 <view class="charging-info" bindtap="navigateToDetail">
   <view class="charging-header">

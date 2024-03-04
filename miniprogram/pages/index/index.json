@@ -1,6 +1,3 @@
 {
-  "enablePullDownRefresh": true,
-  "usingComponents": {
-    "cloud-tip-modal": "/components/cloudTipModal/index"
-  }
+  "enablePullDownRefresh": true
 }
