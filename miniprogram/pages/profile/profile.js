@@ -27,7 +27,48 @@ Page({
     animationData: animation.export()
   });
   },
-
+  
+  // 在这里添加你的 refreshPageData 方法
+  refreshPageData: function() {
+    // 方法实现
+    wx.showLoading({
+    title: '刷新中...',
+    });
+    wx.request({
+    url: 'https://example.com/api/user/info', // 示例URL，请替换成实际的API地址
+    method: 'GET',
+    success: (res) => {
+      if (res.statusCode === 200) {
+      this.setData({
+        userInfo: res.data,
+      });
+      wx.showToast({
+        title: '数据刷新成功',
+        icon: 'success',
+        duration: 2000
+      });
+      } else {
+      console.error('数据获取失败', res);
+      wx.showToast({
+        title: '数据刷新失败',
+        icon: 'none',
+        duration: 2000
+      });
+      }
+    },
+    fail: (err) => {
+      console.error('请求失败', err);
+      wx.showToast({
+      title: '请求失败',
+      icon: 'none',
+      duration: 2000
+      });
+    },
+    complete: () => {
+      wx.hideLoading();
+    }
+    });
+  },
   // 创建滑动动画
   createSlideAnimation: function() {
   let animation = wx.createAnimation({
@@ -72,6 +113,15 @@ Page({
   });
   },
 
+  // 在这里插入 onAvatarTap 方法
+  onAvatarTap: function() {
+    if (this.data.userInfo.nickName === '未登录') {
+      this.getUser();
+    } else {
+      console.log('用户已登录');
+    }
+    },
+
   // 生命周期函数--监听页面加载
   onLoad() {
   const userInfo = wx.getStorageSync('userInfo');
@@ -106,11 +156,19 @@ Page({
 
   // 页面相关事件处理函数--监听用户下拉动作
   onPullDownRefresh() {
-  // 用户下拉刷新时的处理逻辑
-  console.log('用户下拉刷新');
-  // 例如，刷新用户信息
-  this.getUser(); // 假设这里调用获取用户信息的方法
-  wx.stopPullDownRefresh(); // 停止下拉刷新动画
+    console.log('用户下拉刷新');
+    // 检查用户是否已经登录（即是否已经有用户信息存储）
+    const userInfo = wx.getStorageSync('userInfo');
+    if (!userInfo) {
+      // 用户未登录，提示登录
+      this.getUser();
+    } else {
+      // 用户已登录，可以在这里进行其他刷新逻辑，比如刷新页面数据
+      console.log('用户已登录，刷新页面数据');
+      // 假设有一个刷新页面数据的方法 refreshPageData
+      this.refreshPageData(); // 需要实现这个方法，需要根据实际情况实现这个方法，比如重新从服务器获取最新数据
+    }
+    wx.stopPullDownRefresh(); // 停止下拉刷新动画
   },
 
   // 页面上拉触底事件的处理函数
@@ -131,21 +189,28 @@ Page({
 
   // 退出登录
   logout() {
-  wx.showModal({
-    title: '退出登录',
-    content: '确定退出登录吗？',
-    success: (res) => {
-    if (res.confirm) {
-      console.log('用户点击确定');
-      wx.removeStorageSync('userInfo');
-      this.setData({
-      userInfo: { avatarUrl: '/images/初始头像.webp', nickName: '未登录' }
-      });
-      wx.showToast({ title: '已退出登录', icon: 'success', duration: 2000 });
-    } else if (res.cancel) {
-      console.log('用户点击取消');
+    // 首先检查用户是否已登录
+    if (this.data.userInfo.nickName === '未登录') {
+    // 如果用户未登录，则不弹出退出登录的确认对话框，直接返回或显示提示
+    wx.showToast({ title: '您当前未登录', icon: 'none', duration: 2000 });
+    } else {
+    // 用户已登录，弹出确认对话框
+    wx.showModal({
+      title: '退出登录',
+      content: '确定退出登录吗？',
+      success: (res) => {
+      if (res.confirm) {
+        console.log('用户点击确定');
+        wx.removeStorageSync('userInfo');
+        this.setData({
+        userInfo: { avatarUrl: '/images/初始头像.webp', nickName: '未登录' }
+        });
+        wx.showToast({ title: '已退出登录', icon: 'success', duration: 2000 });
+      } else if (res.cancel) {
+        console.log('用户点击取消');
+      }
+      }
+    });
     }
-    }
-  });
   },
 })

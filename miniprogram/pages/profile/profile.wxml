@@ -5,7 +5,7 @@
     <!-- style="background-image: url('/images/persons/mind_head_bg.jpg');" -->
     <view class="container_head">
       <image class="head_img" src="/images/头部4.jpg"></image>
-      <view class="head_pers_info" bindtap="getUser">
+      <view class="head_pers_info" bindtap="onAvatarTap">
         <view class="head_pic" animation="{{animationData}}">
         <!-- 绑定头像图片，点击触发 getUser -->
         <image class="head_pic_content" mode="aspectFit" src="{{userInfo.avatarUrl}}"></image>
