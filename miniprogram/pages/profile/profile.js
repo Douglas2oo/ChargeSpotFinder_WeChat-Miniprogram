@@ -115,12 +115,16 @@ Page({
 
   // 在这里插入 onAvatarTap 方法
   onAvatarTap: function() {
+    // 检查用户是否已登录
     if (this.data.userInfo.nickName === '未登录') {
-      this.getUser();
+    // 用户未登录，调用getUser方法以引导用户登录
+    this.getUser();
     } else {
-      console.log('用户已登录');
+    // 用户已登录，不执行任何操作
+    console.log('用户已登录，无需再次登录');
+    // 此处也可以添加其他逻辑，比如打开用户的个人资料页等
     }
-    },
+  },
 
   // 生命周期函数--监听页面加载
   onLoad() {
