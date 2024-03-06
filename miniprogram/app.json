@@ -1,11 +1,12 @@
 {
   "pages": [
-  "pages/index/index",
-  "pages/web/index",
-  "pages/chargingDetail/chargingDetail",
-  "pages/map/map",
-  "pages/scan/scan",
-  "pages/profile/profile"
+    "pages/index/index",
+    "pages/web/index",
+    "pages/chargingDetail/chargingDetail",
+    "pages/map/map",
+    "pages/scan/scan",
+    "pages/profile/profile",
+    "pages/error/network"
   ],
   "permission": {
     "scope.userLocation": {
@@ -13,36 +14,36 @@
     }
   },
   "tabBar": {
-  "color": "#8a8a8a",
-  "selectedColor": "#f85959",
-  "backgroundColor": "#ffffff",
-  "borderStyle": "black",
-  "list": [
-    {
-    "pagePath": "pages/index/index",
-    "text": "首页",
-    "iconPath": "images/首页.jpg",
-    "selectedIconPath": "images/首页2.jpg"
-    },
-    {
-    "pagePath": "pages/map/map",
-    "text": "地图",
-    "iconPath": "images/地图.jpg",
-    "selectedIconPath": "images/地图2.jpg"
-    },
-    {
-    "pagePath": "pages/scan/scan",
-    "text": "扫码充电",
-    "iconPath": "images/扫码.jpg",
-    "selectedIconPath": "images/扫码2.jpg"
-    },
-    {
-    "pagePath": "pages/profile/profile",
-    "text": "我的",
-    "iconPath": "images/我的.jpg",
-    "selectedIconPath": "images/我的2.jpg"
-    }
-  ]
+    "color": "#8a8a8a",
+    "selectedColor": "#f85959",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/首页.jpg",
+        "selectedIconPath": "images/首页2.jpg"
+      },
+      {
+        "pagePath": "pages/map/map",
+        "text": "地图",
+        "iconPath": "images/地图.jpg",
+        "selectedIconPath": "images/地图2.jpg"
+      },
+      {
+        "pagePath": "pages/scan/scan",
+        "text": "扫码充电",
+        "iconPath": "images/扫码.jpg",
+        "selectedIconPath": "images/扫码2.jpg"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "images/我的.jpg",
+        "selectedIconPath": "images/我的2.jpg"
+      }
+    ]
   },
   "window": {
     "backgroundColor": "#a4d792",

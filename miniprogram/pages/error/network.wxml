@@ -1,0 +1,5 @@
+<!--pages/error/network.wxml-->
+<view class="container">
+  <text class="error-message">{{errorMessage}}</text>
+  <button bindtap="retryConnection" class="retry-button">{{retryButton}}</button>
+</view>

@@ -1,0 +1,34 @@
+/* pages/error/network.wxss */
+/* 容器样式，保持内容居中 */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+/* 文本样式 */
+.text {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* 按钮样式 */
+.button {
+  background-color: #007aff;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+/* 按钮：hover状态增加一点效果，提升体验（注意：小程序中不支持:hover状态，此处为示例） */
+.button:hover {
+  background-color: #005ecb;
+}
