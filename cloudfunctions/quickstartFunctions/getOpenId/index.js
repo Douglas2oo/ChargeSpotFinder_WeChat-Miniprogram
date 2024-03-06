@@ -15,3 +15,4 @@ exports.main = async (event, context) => {
     unionid: wxContext.UNIONID,
   };
 };
+
