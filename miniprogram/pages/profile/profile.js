@@ -1,11 +1,14 @@
+//profile.js
 Page({
   data: {
+  phoneNumber:null,
   userInfo: {
     avatarUrl: '/images/初始头像.webp',
     nickName: '未登录'
   },
   animationData: {}, // 初始化动画数据
   menuAnimation: {} // 菜单项动画数据
+  
   },
   
   // 页面加载时
@@ -43,46 +46,81 @@ Page({
   });
   },
 
+    //获取手机号
+    getPhoneNumber: function(e) {
+      this.onAvatarTap(); // 执行额外的逻辑
+      if (e.detail.errMsg === 'getPhoneNumber:ok') {
+        console.log('手机号码', e.detail.encryptedData);
+        wx.showToast({
+          title: '手机号授权成功',
+          icon: 'success'
+        });
+        this.setData({
+          isPhoneBound: true // 设置手机号绑定状态为true
+        });
+      } else {
+        wx.showToast({
+          title: '无法获取手机号',
+          icon: 'none'
+        });
+      }
+    },
+    
+
+  bindPhoneNumber: function() {
+    wx.getPhoneNumber({
+      success: (res) => {
+        if (res.errMsg === 'getPhoneNumber:ok') {
+          // 用户同意授权
+          this.getPhoneNumber(res); // 传递事件对象
+        } else {
+          // 用户拒绝授权
+          wx.showToast({
+            title: '无法获取手机号',
+            icon: 'none'
+          });
+        }
+      }
+    });
+  },
+  
+
   // 获取用户信息
   getUser() {
-  wx.showModal({
-    title: '登录',
-    content: '登录后可以享受更多服务',
-    success: (res) => {
-    if (res.confirm) {
-      wx.showLoading({ title: '正在登录...' });
-      wx.getUserProfile({
-      desc: '用于完善个人资料',
+    wx.showModal({
+      title: '登录',
+      content: '登录后可以享受更多服务',
       success: (res) => {
-        console.log('获取用户信息成功', res);
-        this.setData({ userInfo: res.userInfo });
-        wx.setStorageSync('userInfo', res.userInfo);
-        wx.showToast({ title: '登录成功', icon: 'success', duration: 2000 });
-      },
-      fail: (err) => {
-        console.error('获取用户信息失败', err);
-        wx.showToast({ title: '登录失败', icon: 'error', duration: 2000 });
-      },
-      complete: () => wx.hideLoading()
-      });
-    } else if (res.cancel) {
-      console.log('用户取消登录');
-      wx.showToast({ title: '取消登录', icon: 'none', duration: 2000 });
-    }
-    }
-  });
+        if (res.confirm) {
+          wx.showLoading({ title: '正在登录...' });
+          wx.getUserProfile({
+            desc: '用于完善个人资料',
+            success: (res) => {
+              console.log('获取用户信息成功', res);
+              this.setData({ userInfo: res.userInfo });
+              wx.setStorageSync('userInfo', res.userInfo);
+              wx.showToast({ title: '登录成功', icon: 'success', duration: 2000 });
+            },
+            fail: (err) => {
+              console.error('获取用户信息失败', err);
+              wx.showToast({ title: '登录失败', icon: 'error', duration: 2000 });
+            },
+            complete: () => wx.hideLoading()
+          });
+        } else if (res.cancel) {
+          console.log('用户取消登录');
+          wx.showToast({ title: '取消登录', icon: 'none', duration: 2000 });
+        }
+      }
+    });
   },
-
+  
   // 在这里插入 onAvatarTap 方法
   onAvatarTap: function() {
     // 检查用户是否已登录
     if (this.data.userInfo.nickName === '未登录') {
-    // 用户未登录，调用getUser方法以引导用户登录
-    this.getUser();
-    } else {
-    // 用户已登录，不执行任何操作
-    console.log('用户已登录，无需再次登录');
-    // 此处也可以添加其他逻辑，比如打开用户的个人资料页等
+      // 用户未登录，调用getUser方法以引导用户登录
+      this.getUser();
     }
   },
 
