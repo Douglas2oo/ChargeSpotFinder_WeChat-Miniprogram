@@ -7,3 +7,44 @@
   left: 0;
   z-index: 999;
 }
+
+.info-bar {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 5px;
+  z-index: 10;
+}
+
+.search-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  z-index: 10;
+  transition: bottom 0.3s ease; /* 确保使用transition来支持动画 */
+}
+
+.search-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  position: relative;
+}
+
+
+.result-list {
+  left: 50%;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.result-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}

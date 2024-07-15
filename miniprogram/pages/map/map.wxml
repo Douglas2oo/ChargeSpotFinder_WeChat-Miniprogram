@@ -1,12 +1,34 @@
 <view class="full-screen-map">
   <map
-  id="map"
-  longitude="{{longitude}}"
-  latitude="{{latitude}}"
-  scale="14"
-  markers="{{markers}}"
-  show-location
-  style="width: 100%; height: 100%;"
+    id="map"
+    longitude="{{longitude}}"
+    latitude="{{latitude}}"
+    scale="14"
+    markers="{{markers}}"
+    show-location
+    style="width: 100%; height: 100%;"
   >
   </map>
+     <!-- <view class="info-bar">
+    <text>您所在城市: {{city}}</text>
+  </view> -->
+  <view class="search-container" animation="{{animationData}}">
+    <view class="search-box">
+      <input type="text" placeholder="搜索附近的充电桩" bindinput="onInput" bindfocus="onFocus" value="{{searchQuery}}" />
+    </view>
+    <view class="result-list" wx:if="{{showResults}}">
+      <block wx:if="{{searchQuery.length > 0}}">
+        <!-- 显示搜索结果 -->
+        <block wx:for="{{searchResults}}" wx:key="id">
+          <view class="result-item">{{item.name}}</view>
+        </block>
+      </block>
+      <block wx:else>
+        <!-- 显示附近的充电桩 -->
+        <block wx:for="{{nearbyStations}}" wx:key="id">
+          <view class="result-item">{{item.name}}</view>
+        </block>
+      </block>
+    </view>
+  </view>
 </view>
