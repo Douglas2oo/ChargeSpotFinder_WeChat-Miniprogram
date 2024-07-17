@@ -10,14 +10,7 @@
 }
 
 button {
-  background-color: #f85959; /* 设定按钮的背景色 */
-  color: white; /* 设定按钮文字颜色 */
-  padding: 10px 20px; /* 增加按钮的内边距，使其更易点击 */
   margin-top: 20px; /* 设定上边距，避免元素紧密堆叠 */
-  border-radius: 5px; /* 添加圆角边框 */
-  font-size: 16px; /* 设定文字大小 */
-  border: none; /* 去除边框 */
-  cursor: pointer; /* 鼠标悬停时显示手形指针 */
 }
 
 button:focus {
@@ -29,7 +22,7 @@ button::after {
 }
 
 page {
-  background-color: #a4d792; /* 设定页面背景色 */
+  background-color: #f0f0f0; /* 设定页面背景色 */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

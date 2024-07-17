@@ -7,7 +7,9 @@ App({
   },
 
   // 全局数据
-  globalData: {},
+  globalData: {
+    searchBoxPosition: 'bottom',
+  },
 
   // 监听网络状态变化的方法
   monitorNetworkChange: function() {
