@@ -4,12 +4,16 @@ App({
   this.globalData = {};
   // 监听网络状态变化
   this.monitorNetworkChange();
+  this.loadStationData();
   },
 
   // 全局数据
   globalData: {
     searchBoxPosition: 'bottom',
+    originalStationData: [],
   },
+
+  
 
   // 监听网络状态变化的方法
   monitorNetworkChange: function() {
@@ -65,5 +69,479 @@ App({
     this.showNetworkModal();
     }
   });
-  }
+  },
+
+  loadStationData: function() {
+    // 示例：假设这是从后端获取的充电桩位置数据
+    const stationsData = [
+      {
+        id: 1,
+        name: "亿电邦科充电桩",
+        price: "¥0.85/度",
+        distance: "1.4km",
+        discountInfo: "优惠信息",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 5, // 充电速度
+        onLand: true,
+        Faculty: 'Restroom',
+        Parking: true,
+        state: {
+          SuperCharge: {
+            available: 5,
+            total: 10
+          },
+          NormalCharge: {
+            available: 10,
+            total: 20
+        }
+      }
+      },
+      {
+        id: 2,
+        name: "超级电充电桩",
+        price: "¥1.00/度",
+        distance: "0.5km",
+        discountInfo: "无优惠",
+        averageChargeTime: "平均充电1.5小时",
+        chargePerMinute: "每次充电0.20元/分钟",
+        speed: 10, // 充电速度
+      },
+      {
+        id: 3,
+        name: "亿电邦科充电桩",
+        price: "¥0.85/度",
+        distance: "1.4km",
+        discountInfo: "优惠信息",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 20, // 充电速度
+      },
+      {
+        id: 4,
+        name: "超级电充电桩",
+        price: "¥1.00/度",
+        distance: "0.5km",
+        discountInfo: "无优惠",
+        averageChargeTime: "平均充电1.5小时",
+        chargePerMinute: "每次充电0.20元/分钟",
+        speed: 10, // 充电速度
+      },
+      {
+        id: 5,
+        name: "亿电邦科充电桩",
+        price: "¥0.85/度",
+        distance: "1.0km",
+        discountInfo: "优惠信息",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 5, // 充电速度
+      },
+      {
+        id: 6,
+        name: "超级电充电桩",
+        price: "¥1.00/度",
+        distance: "0.5km",
+        discountInfo: "无优惠",
+        averageChargeTime: "平均充电1.5小时",
+        chargePerMinute: "每次充电0.20元/分钟",
+        speed: 10, // 充电速度
+      },
+      {
+        id: 7,
+        name: "亿电邦科充电桩",
+        price: "¥0.85/度",
+        distance: "1.4km",
+        discountInfo: "优惠信息",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 5, // 充电速度
+      },
+      {
+        id: 8,
+        name: "超级电充电桩",
+        price: "¥1.00/度",
+        distance: "0.5km",
+        discountInfo: "无优惠",
+        averageChargeTime: "平均充电1.5小时",
+        chargePerMinute: "每次充电0.20元/分钟",
+        speed: 10, // 充电速度
+      },
+      {
+        id: 9,
+        name: "亿电邦科充电桩",
+        price: "¥0.85/度",
+        distance: "1.4km",
+        discountInfo: "优惠信息",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 5, // 充电速度
+      },
+      {
+        id: 10,
+        name: "超级电充电桩",
+        price: "¥1.00/度",
+        distance: "0.5km",
+        discountInfo: "无优惠",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 5, // 充电速度
+      },
+      {
+        id: 11,
+        name: "亿电邦科充电桩",
+        price: "¥0.85/度",
+        distance: "1.4km",
+        discountInfo: "优惠信息",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 5, // 充电速度
+        onLand: true,
+        Faculty: 'Restroom',
+        Parking: true,
+        state: {
+          SuperCharge: {
+            available: 5,
+            total: 10
+          },
+          NormalCharge: {
+            available: 10,
+            total: 20
+        }
+      }
+      },//给我更多相关数据
+      {
+        id: 12,
+        name: "超级电充电桩",
+        price: "¥1.00/度",
+        distance: "0.5km",
+        discountInfo: "无优惠",
+        averageChargeTime: "平均充电1.5小时",
+        chargePerMinute: "每次充电0.20元/分钟",
+        speed: 10, // 充电速度
+      },
+      {
+        id: 13,
+        name: "亿电邦科充电桩",
+        price: "¥0.85/度",
+        distance: "1.4km",
+        discountInfo: "优惠信息",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 5, // 充电速度
+      },
+      {
+        id: 14,
+        name: "超级电充电桩",
+        price: "¥1.00/度",
+        distance: "0.5km",
+        discountInfo: "无优惠",
+        averageChargeTime: "平均充电1.5小时",
+        chargePerMinute: "每次充电0.20元/分钟",
+        speed: 10, // 充电速度
+      },
+      {
+        id: 15,
+        name: "亿电邦科充电桩",
+        price: "¥0.85/度",
+        distance: "1.4km",
+        discountInfo: "优惠信息",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 5, // 充电速度
+        state: {
+          SuperCharge: {
+            available: 5,
+            total: 10
+          },
+          NormalCharge: {
+            available: 10,
+            total: 20
+        }
+      }},
+      {
+        id: 16,
+        name: "超级电充电桩",
+        price: "¥1.00/度",
+        distance: "0.5km",
+        discountInfo: "无优惠",
+        averageChargeTime: "平均充电1.5小时",
+        chargePerMinute: "每次充电0.20元/分钟",
+        speed: 10, // 充电速度
+      },
+      {
+        id: 17,
+        name: "亿电邦科充电桩",
+        price: "¥0.85/度",
+        distance: "1.4km",
+        discountInfo: "优惠信息",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 5, // 充电速度
+      },
+      {
+        id: 18,
+        name: "超级电充电桩",
+        price: "¥1.00/度",
+        distance: "0.5km",
+        discountInfo: "无优惠",
+        averageChargeTime: "平均充电1.5小时",
+        chargePerMinute: "每次充电0.20元/分钟",
+        speed: 10, // 充电速度
+      },
+      {
+        id: 19,
+        name: "亿电邦科充电桩",
+        price: "¥0.85/度",
+        distance: "1.4km",
+        discountInfo: "优惠信息",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 5, // 充电速度
+      },
+      {
+        id: 20,
+        name: "超级电充电桩",
+        price: "¥1.00/度",
+        distance: "0.5km",
+        discountInfo: "无优惠",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 5, // 充电速度
+        state: {
+          SuperCharge: {
+            available: 5,
+            total: 10
+          },
+          NormalCharge: {
+            available: 10,
+            total: 20
+        }
+      },
+      },
+      {
+        id: 21,
+        name: "超级电充电桩",
+        price: "¥1.00/度",
+        distance: "0.5km",
+        discountInfo: "无优惠",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 5, // 充电速度
+        state: {
+          SuperCharge: {
+            available: 5,
+            total: 10
+          },
+          NormalCharge: {
+            available: 10,
+            total: 20
+        }
+      },
+      },
+      {
+        id: 22,
+        name: "超级电充电桩",
+        price: "¥1.00/度",
+        distance: "0.5km",
+        discountInfo: "无优惠",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 5, // 充电速度
+        state: {
+          SuperCharge: {
+            available: 5,
+            total: 10
+          },
+          NormalCharge: {
+            available: 10,
+            total: 20
+        }
+      },
+      },
+      {
+        id: 22,
+        name: "超级电充电桩",
+        price: "¥1.00/度",
+        distance: "0.5km",
+        discountInfo: "无优惠",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 5, // 充电速度
+        state: {
+          SuperCharge: {
+            available: 5,
+            total: 10
+          },
+          NormalCharge: {
+            available: 10,
+            total: 20
+        }
+      },
+      },
+      {
+        id: 22,
+        name: "超级电充电桩",
+        price: "¥1.00/度",
+        distance: "0.5km",
+        discountInfo: "无优惠",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 5, // 充电速度
+        state: {
+          SuperCharge: {
+            available: 5,
+            total: 10
+          },
+          NormalCharge: {
+            available: 10,
+            total: 20
+        }
+      },
+      },
+      {
+        id: 22,
+        name: "超级电充电桩",
+        price: "¥1.00/度",
+        distance: "0.5km",
+        discountInfo: "无优惠",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 5, // 充电速度
+        state: {
+          SuperCharge: {
+            available: 5,
+            total: 10
+          },
+          NormalCharge: {
+            available: 10,
+            total: 20
+        }
+      },
+      },
+      {
+        id: 22,
+        name: "超级电充电桩",
+        price: "¥1.00/度",
+        distance: "0.5km",
+        discountInfo: "无优惠",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 5, // 充电速度
+        state: {
+          SuperCharge: {
+            available: 5,
+            total: 10
+          },
+          NormalCharge: {
+            available: 10,
+            total: 20
+        }
+      },
+      },
+      {
+        id: 22,
+        name: "超级电充电桩",
+        price: "¥1.00/度",
+        distance: "0.5km",
+        discountInfo: "无优惠",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 5, // 充电速度
+        state: {
+          SuperCharge: {
+            available: 5,
+            total: 10
+          },
+          NormalCharge: {
+            available: 10,
+            total: 20
+        }
+      },
+      },
+      {
+        id: 22,
+        name: "超级电充电桩",
+        price: "¥1.00/度",
+        distance: "0.5km",
+        discountInfo: "无优惠",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 5, // 充电速度
+        state: {
+          SuperCharge: {
+            available: 5,
+            total: 10
+          },
+          NormalCharge: {
+            available: 10,
+            total: 20
+        }
+      },
+      },
+      {
+        id: 22,
+        name: "超级电充电桩",
+        price: "¥1.00/度",
+        distance: "0.5km",
+        discountInfo: "无优惠",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 5, // 充电速度
+        state: {
+          SuperCharge: {
+            available: 5,
+            total: 10
+          },
+          NormalCharge: {
+            available: 10,
+            total: 20
+        }
+      },
+      },
+      {
+        id: 22,
+        name: "超级电充电桩1",
+        price: "¥1.00/度",
+        distance: "0.5km",
+        discountInfo: "无优惠",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 5, // 充电速度
+        state: {
+          SuperCharge: {
+            available: 5,
+            total: 10
+          },
+          NormalCharge: {
+            available: 10,
+            total: 20
+        }
+      },
+      },
+      {
+        id: 22,
+        name: "超级电充电桩",
+        price: "¥1.00/度",
+        distance: "0.5km",
+        discountInfo: "无优惠",
+        averageChargeTime: "平均充电2小时",
+        chargePerMinute: "每次充电0.17元/分钟",
+        speed: 5, // 充电速度
+        state: {
+          SuperCharge: {
+            available: 5,
+            total: 10
+          },
+          NormalCharge: {
+            available: 10,
+            total: 20
+        }
+      },
+      },
+      // 其他充电桩信息
+    ];
+
+    this.globalData.originalStationData = stationsData;
+  },
 });
