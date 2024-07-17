@@ -6,7 +6,8 @@
     "pages/map/map",
     "pages/scan/scan",
     "pages/profile/profile",
-    "pages/error/network"
+    "pages/error/network",
+    "pages/searching/searching"
   ],
   "permission": {
     "scope.userLocation": {

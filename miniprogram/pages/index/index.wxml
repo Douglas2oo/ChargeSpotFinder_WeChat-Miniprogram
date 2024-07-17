@@ -1,7 +1,7 @@
 <!-- Charging station info card -->
 <view class="container">
   <view class="search-sort-bar">
-    <input type="text" class="search-input" placeholder="搜索充电桩" value="{{searchQuery}}" bindinput="onSearchInput" />
+    <input type="text" class="search-input" placeholder="搜索充电桩" value="{{searchQuery}}" bindinput="onSearchInput" bindfocus="onSearchFocus"/>
     <view class="banner">
       Advertisement
     </view>

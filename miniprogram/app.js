@@ -11,6 +11,7 @@ App({
   globalData: {
     searchBoxPosition: 'bottom',
     originalStationData: [],
+    searchQuery: '',
   },
 
   
