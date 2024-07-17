@@ -1,14 +1,47 @@
 <!-- Charging station info card -->
-<view class="charging-info" bindtap="navigateToDetail">
-  <view class="charging-header">
-    <text>亿电邦科充电桩</text>
-    <text class="price">¥0.85/度</text>
+<view class="container">
+  <view class="search-sort-bar">
+    <input type="text" class="search-input" placeholder="搜索充电桩" value="{{searchQuery}}" bindinput="onSearchInput" />
+    <view class="banner">
+      Advertisement
+    </view>
+    <view class="sort-options">
+      <button class="sort-button  {{ activeButton === 'price' ? 'sort-button-active' : '' }}" data-type="price" bindtap="sortStations">低价优先</button>
+      <button class="sort-button {{ activeButton === 'distance' ? 'sort-button-active' : '' }}" data-type="distance" bindtap="sortStations">距离最近</button>
+      <button class="sort-button {{ activeButton === 'speed' ? 'sort-button-active' : '' }}" data-type="speed" bindtap="sortStations">充电速度最快</button>
+    </view>
+
+<!-- 目前能兼顾搜索和排序 -->
+    <scroll-view class="tag-scroll" scroll-x><!-- 半成品：需要兼顾搜索，排序共同进行筛选 -->
+  <view class="tag">
+    <button class="tag-button {{ tagType.includes('SuperCharge') ? 'tag-button-active' : 'tag-button-inactive' }}"  style="width:fit-content" data-feature="SuperCharge" bindtap="tagSort">超充</button> <view class="blank-space"></view>
+    <button class="tag-button" style="width:fit-content">卫生间</button> <view class="blank-space"></view>
   </view>
-  <view class="charging-subheader">
-    <text>距离 | 1.4km | 优惠信息</text>
+</scroll-view>
+
   </view>
-  <view class="charging-details">
-    <text>平均充电2小时 | 每次充电0.17元/分钟</text>
+  <view class="charging-list">
+    <block wx:for="{{chargingStations}}" wx:key="id">
+      <view class="charging-info" bindtap="navigateToDetail" data-id="{{item.id}}">
+        <view class="charging-header">
+          <text>{{item.name}}</text>
+          <text class="price">{{item.price}}</text>
+        </view>
+        <view class="charging-state">
+          <text wx:if="{{item.state.SuperCharge}}" class="state-super">超快：闲{{item.state.SuperCharge.available}}/{{item.state.SuperCharge.total}}</text>
+          <text wx:if="{{item.state.NormalCharge}}" class="state-normal">快：闲{{item.state.NormalCharge.available}}/{{item.state.NormalCharge.total}}</text>
+        </view>
+        <view class="charging-subheader">
+          <text>距离 {{item.distance}} | {{item.discountInfo}}</text>
+        </view>
+        <view class="charging-details">
+          <text>{{item.averageChargeTime}} | {{item.chargePerMinute}}</text>
+          <text> | {{item.onLand ? '地上' : '地下'}} </text>
+        </view>
+      </view>
+    </block>
+     <view wx:if="{{!allLoaded}}" class="load-more" bindtap="loadMoreStations">————    展示更多   ————</view>
+    <view wx:if="{{allLoaded}}" class="no-more-data">已加载完所有数据</view>
   </view>
 </view>
 <!-- 其他内容 -->
