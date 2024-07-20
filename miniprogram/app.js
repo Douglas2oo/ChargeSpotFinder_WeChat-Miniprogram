@@ -85,7 +85,9 @@ App({
         chargePerMinute: "每次充电0.17元/分钟",
         speed: 5, // 充电速度
         onLand: true,
-        Faculty: 'Restroom',
+        faculty: ['卫生间', '停车', '便利店'],
+        workingTime: '周一~周日 8:00-22:00',
+        location: '广州市天河区天河路123号',
         Parking: true,
         state: {
           SuperCharge: {
@@ -96,7 +98,25 @@ App({
             available: 10,
             total: 20
         }
-      }
+      },
+        chargingGun: [
+          {
+            id: 246542322354218489,
+            power: 250,
+            type: 'SuperCharge',
+            mode: '直流',
+            energy: 100,
+            available: true,
+          },
+          {
+            id: 246542322354218489,
+            power: 250,
+            type: 'SuperCharge',
+            mode: '直流',
+            energy: 100,
+            available: true,
+          }
+        ]
       },
       {
         id: 2,
