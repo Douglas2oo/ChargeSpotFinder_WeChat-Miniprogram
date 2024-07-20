@@ -1,5 +1,9 @@
 {
   "navigationBarTitleText": "充电站详情",
   "navigationBarBackgroundColor": "#ffffff",
-  "navigationBarTextStyle": "black"
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+  "van-panel": "@vant/weapp/panel/index"
+}
+
 }

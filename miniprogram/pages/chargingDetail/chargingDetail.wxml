@@ -1,11 +1,91 @@
 <!-- chargingDetail.wxml -->
-<view class="container">
+<!-- <view class="contain pic">picture</view>
+<view class="contain info">
   <view class="station-info">
-  <view class="name">{{stationInfo.name}}</view>
-  <view class="location">{{stationInfo.location}}</view>
-  <view class="price">{{stationInfo.price}}</view>
-  <view class="distance">{{stationInfo.distance}}</view>
-  <view class="average-time">{{stationInfo.averageTime}}</view>
-  <view class="cost-per-hour">{{stationInfo.costPerHour}}</view>
+    <view class="info-container">
+      <view class="info-left">
+        <view class="name">Charging Station A</view>
+        <view class="faculity_list">
+          <view wx:for="{{['WiFi', 'Restrooms', 'Cafe']}}" wx:key="*this" class="faculty_block">
+            <view class="faculty_item">{{item}} |</view>
+          </view>
+        </view>
+        <view class="working_time">营业时间：8:00 AM - 10:00 PM</view>
+        <view class="average-time">Average Charging Time: 30 minutes</view>
+        <view class="cost-per-hour">Cost per Hour: $5.00</view>
+        <view class="location_container" hover-class="none" hover-stop-propagation="false">
+          <view class="location" style="width: 358rpx; height: 77rpx; display: block; box-sizing: border-box">
+            1234 Elm Street, Springfield, IL
+          </view>
+          <view class="button-container">
+            <view class="star_area">
+              <image style="position: relative; left: 137rpx; top: 0rpx" class="star-image" src="/images/收藏.png" bindtap="addFavorite" />
+              <view class="addFavorite" style="position: relative; left: 137rpx; top: 0rpx">
+                收藏
+              </view>
+            </view>
+            <view class="navigate_area">
+              <image style="position: relative; left: 128rpx; top: 0rpx" class="navigate-image" src="/images/navigate.png" bindtap="onNavigateTap" />
+              <view class="distance" style="position: relative; left: 124rpx; top: 0rpx">5 km</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view> -->
+<view class="contain pic">picture</view>
+<view class="contain info">
+  <view class="station-info">
+    <view class="info-container">
+      <view class="info-left">
+        <view class="name">{{stationInfo.name}}</view>
+        <view class="faculity_list">
+          <view wx:for="{{stationInfo.faculty}}" wx:key="*this" class="faculty_block">
+            <view class="faculty_item">{{item}} |</view>
+          </view><view class="working_time">营业时间：{{stationInfo.workingTime}}</view>
+        </view>
+        <view class="charging-state">
+          <view wx:if="{{stationInfo.state.SuperCharge}}" class="state-super">
+            超快：闲{{stationInfo.state.SuperCharge.available}}/{{stationInfo.state.SuperCharge.total}}
+          </view>
+          <view wx:if="{{stationInfo.state.NormalCharge}}" class="state-normal">
+            快：闲{{stationInfo.state.NormalCharge.available}}/{{stationInfo.state.NormalCharge.total}}
+          </view>
+        </view>
+        <view class="average-time">{{stationInfo.averageTime}}</view>
+        <view class="cost-per-hour">{{stationInfo.costPerHour}}</view>
+        <view class="location_container" hover-class="none" hover-stop-propagation="false">
+          <view class="location" style="width: 358rpx; height: 77rpx; display: block; box-sizing: border-box">
+            {{stationInfo.location}}
+          </view>
+          <view class="button-container">
+            <view class="star_area">
+              <image style="position: relative; left: 120rpx; top: 0rpx" class="star-image" src="/images/收藏.png" bindtap="addFavorite" />
+              <view class="addFavorite" style="position: relative; left: 120rpx; top: 0rpx">
+                收藏
+              </view>
+            </view>
+            <view class="navigate_area">
+              <image style="position: relative; left: 110rpx; top: 0rpx" class="navigate-image" src="/images/navigate.png" bindtap="onNavigateTap" />
+              <view class="distance" style="position: relative; left: 110rpx; top: 0rpx">5 km</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="contain">
+  <van-panel title="充电桩信息">
+  <view>内容</view>
+</van-panel>
+</view>
+
+<view class="bottom">
+  <view class="bottom_price">{{stationInfo.price}}</view>
+  <view class="button_container">
+    <button class="scan_button" style="width: fit-content" bind:tap="toScan">扫码充电</button>
   </view>
 </view>
