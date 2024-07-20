@@ -23,7 +23,7 @@ Page({
   },
 
   getData(e){
-    let data = e.detail.value.replace(/(^\s*)|(\s*$)/g, "");//去掉前后的空格
+    let data = e.detail.replace(/(^\s*)|(\s*$)/g, "");//去掉前后的空格
       if (data.trim() != '') {
         this.data.list.forEach((key, index) => {
           if (key == data) {
@@ -33,7 +33,7 @@ Page({
         this.data.list.unshift(data);
         this.setData({
           list: this.data.list.slice(0,15),
-          searchQuery: e.detail.value
+          searchQuery: e.detail
         })
         wx.setStorageSync('search_history', JSON.stringify(this.data.list))
         this.switch(data);
@@ -50,7 +50,7 @@ Page({
 
   onSearchInput: function(e) {
     this.setData({
-      search: e.detail.value,
+      search: e.detail,
       searchQuery: e
     });
   },
@@ -74,6 +74,14 @@ Page({
     wx.setStorageSync('search_history', JSON.stringify(this.data.list))
     this.switch(va);
   },
+
+//返回跳转-----------------------------------------------------
+onUnload: function() {
+  const app = getApp();
+  app.globalData.searchQuery = this.data.search;
+  console.log("搜索内容：", this.data.search);
+},
+//------------------------------------------------------------
 
 // 搜索跳转-----------------------------------------------------
 switch: function(e) {
@@ -100,7 +108,7 @@ onSearchConfirm: function() {
   if (e) {
     this.getData(e);
   // handle search confirm button click event
-  const content = e.detail.value;
+  const content = e.detail;
   this.switch(content);
   }
   
