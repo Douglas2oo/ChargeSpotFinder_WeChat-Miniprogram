@@ -115,7 +115,7 @@ Page({
         filteredStations: filtered,
         chargingStations: filtered.slice(0, 20),
       })
-    } else {
+    } else { //未完善
       const filtered = this.data.originalChargingStations.filter(station => {
       switch (feature) {
         case 'SuperCharge':
@@ -226,7 +226,7 @@ onSearchFocus: function() {
   navigateToDetail: function(event) {
   // 此函数用于处理非标记点的其他导航逻辑，如果有的话
   wx.navigateTo({
-    url: `/pages/chargingDetail/chargingDetail` // 根据实际需求修改 URL
+    url: `/pages/chargingDetail/chargingDetail?id=${event.currentTarget.dataset.id}`
   });
   },
 
