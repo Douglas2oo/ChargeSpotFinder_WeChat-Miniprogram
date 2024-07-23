@@ -1,0 +1,10 @@
+/* pages/error/location/location.wxss */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 使用视口高度保证文本垂直居中 */
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}

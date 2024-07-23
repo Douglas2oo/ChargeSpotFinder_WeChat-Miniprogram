@@ -207,4 +207,9 @@ Page({
     });
     }
   },
+  goToFavorites: function() {
+    wx.navigateTo({
+      url: '/pages/favorites/favorites' // 跳转到“我的收藏”页面
+    });
+  }
 })

@@ -1,0 +1,28 @@
+.favorites-container {
+  padding: 10px;
+}
+
+.favorite-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.favorite-image {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+}
+
+.favorite-name {
+  flex: 1;
+}
+
+.remove-favorite {
+  background-color: gray;
+  color: #fff;
+  border: none;
+  font-size: 32rpx;
+  padding: 5px;
+  cursor: pointer;
+}

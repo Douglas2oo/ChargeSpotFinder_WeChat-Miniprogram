@@ -1,0 +1,4 @@
+<!--pages/error/location/location.wxml-->
+<view class="container">
+  <text>检查定位服务状态中...</text>
+</view>

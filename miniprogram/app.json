@@ -3,6 +3,7 @@
     "pages/index/index",
     "pages/web/index",
     "pages/chargingDetail/chargingDetail",
+    "pages/favorites/favorites",
     "pages/map/map",
     "pages/scan/scan",
     "pages/profile/profile",

@@ -10,6 +10,7 @@ App({
   // 全局数据
   globalData: {
     searchBoxPosition: 'bottom',
+    userInfo: null,
     originalStationData: [],
     searchQuery: '',
   },

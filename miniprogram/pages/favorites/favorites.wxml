@@ -1,0 +1,9 @@
+<view class="favorites-container">
+  <block wx:for="{{favorites}}" wx:key="id">
+    <view class="favorite-item" bindtap="navigateToDetail_id" data-id="{{item.id}}">
+      <image class="favorite-image" src="{{item.imageUrl}}"></image>
+      <text class="favorite-name">{{item.name}}</text>
+      <button class="remove-favorite" catchtap="onRemoveFavorite" data-id="{{item.id}}">移除收藏</button>
+    </view>
+  </block>
+</view>
