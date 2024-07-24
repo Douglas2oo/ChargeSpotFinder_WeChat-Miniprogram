@@ -63,8 +63,9 @@
 
 .charging-state {
   display: flex;
-  font-size: 15px;
-  margin-bottom: 3px;
+  font-size: 20px;
+  /* margin-bottom: 3px; */
+  justify-content: space-between;
 }
 
 .state-super {
@@ -145,6 +146,7 @@
   margin-left: -5%;
   padding: 10px;
   background-color: white;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
 }
 
 .bottom_price {
@@ -169,4 +171,133 @@
   margin-right: 3%;
   margin-bottom: 5%;
   margin-top: -3%;
+}
+
+.comments-section {
+  border-top: 1px solid #ccc;
+  padding-top: 20rpx;
+  margin-bottom: 150rpx; /* 确保评论区上方有足够的空间 */
+}
+
+.comments-title {
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.comment {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10rpx;
+}
+
+.comment-avatar {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
+  margin-right: 10rpx;
+}
+
+.comment-content {
+  flex: 1;
+}
+
+.comment-user {
+  font-weight: bold;
+}
+
+.comment-time {
+  display: block;
+  font-size: 24rpx;
+  color: #888;
+  margin-top: 5rpx;
+}
+
+.comment-text-wrapper {
+  word-wrap: break-word;
+  margin-top: 5rpx;
+}
+
+.comment-text {
+  font-size: 30rpx;
+}
+
+.add-comment {
+  display: flex;
+  align-items: center; /* 使按钮与输入框垂直居中对齐 */
+  margin-top: 20rpx;
+}
+
+.add-comment input {
+  flex: 1;
+  padding: 10rpx;
+  border: 1px solid #ccc;
+  border-radius: 5rpx;
+  margin-right: 10rpx;
+}
+
+.add-comment button {
+  padding: 10rpx 20rpx;
+  background-color: #27af2c;
+  color: #fff;
+  border: none;
+  border-radius: 5rpx;
+}
+
+.delete-button {
+  font-size: 20rpx;
+  color: #888;
+  background-color: transparent;
+  border: none;
+  margin-top: 5rpx;
+}
+
+
+
+.comment-actions {
+  display: flex;
+  align-items: center;
+  margin-top: 5rpx;
+}
+
+.like-button {
+  font-size: 40rpx;
+  color: #888;
+  background-color: transparent;
+  border: none;
+  margin-right: 50rpx;
+}
+
+.delete-button {
+  font-size: 20rpx;
+  color: #888;
+  background-color: transparent;
+  border: none;
+}
+
+.state {
+  color: #34c500;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+
+.chargingGun{
+  display: flex;
+  justify-content: space-between;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.panel {
+  background-color: #f0f0f0!important;
+}
+
+.panel .data {
+  font-size: 14px;
 }

@@ -5,6 +5,9 @@ App({
   // 监听网络状态变化
   this.monitorNetworkChange();
   this.loadStationData();
+  if (!this.globalData.comments) {
+    this.globalData.comments = {};
+  }
   },
 
   // 全局数据
@@ -13,6 +16,7 @@ App({
     userInfo: null,
     originalStationData: [],
     searchQuery: '',
+    comments: {},
   },
 
   

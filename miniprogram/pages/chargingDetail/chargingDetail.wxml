@@ -43,16 +43,17 @@
         <view class="faculity_list">
           <view wx:for="{{stationInfo.faculty}}" wx:key="*this" class="faculty_block">
             <view class="faculty_item">{{item}} |</view>
-          </view><view class="working_time">营业时间：{{stationInfo.workingTime}}</view>
+          </view>
+          <view class="working_time">营业时间：{{stationInfo.workingTime}}</view>
         </view>
-        <view class="charging-state">
+        <!-- <view class="charging-state">
           <view wx:if="{{stationInfo.state.SuperCharge}}" class="state-super">
             超快：闲{{stationInfo.state.SuperCharge.available}}/{{stationInfo.state.SuperCharge.total}}
           </view>
           <view wx:if="{{stationInfo.state.NormalCharge}}" class="state-normal">
             快：闲{{stationInfo.state.NormalCharge.available}}/{{stationInfo.state.NormalCharge.total}}
           </view>
-        </view>
+        </view> -->
         <view class="average-time">{{stationInfo.averageTime}}</view>
         <view class="cost-per-hour">{{stationInfo.costPerHour}}</view>
         <view class="location_container" hover-class="none" hover-stop-propagation="false">
@@ -77,15 +78,112 @@
   </view>
 </view>
 
-<view class="contain">
-  <van-panel title="充电桩信息">
-  <view>内容</view>
-</van-panel>
+<view class="contain" bind:tap="showGun">
+  <view class="charging-state">
+    <view wx:if="{{stationInfo.state.SuperCharge}}" class="state-super" bind:tap="showGun">
+      超快：闲{{stationInfo.state.SuperCharge.available}}/{{stationInfo.state.SuperCharge.total}}
+    </view>
+    <view wx:if="{{stationInfo.state.NormalCharge}}" class="state-normal">
+      快：闲{{stationInfo.state.NormalCharge.available}}/{{stationInfo.state.NormalCharge.total}}
+    </view>
+  </view>
 </view>
 
+<view class="contain">
+  <van-panel title="充电桩信息">
+    <view>内容</view>
+  </van-panel>
+</view>
+
+<!-- 评论区林之栋喜欢被插皮燕子 -->
+<view class="comments-section">
+  <text class="comments-title">评论区</text>
+  <block wx:for="{{comments}}" wx:key="index">
+    <view class="comment">
+      <image class="comment-avatar" src="{{item.userInfo.avatarUrl}}" />
+      <view class="comment-content">
+        <text class="comment-user">{{item.userInfo.nickName}}</text>
+        <text class="comment-time">{{item.time}}</text>
+        <view class="comment-text-wrapper">
+          <text class="comment-text">{{item.content}}</text>
+        </view>
+        <view class="comment-actions">
+          <button class="like-button" data-index="{{index}}" bindtap="toggleLikeComment">
+            {{item.liked ? '🤣' : '😀'}} {{item.likes}}
+          </button>
+          <button class="delete-button" data-index="{{index}}" bindtap="deleteComment">删除</button>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view class="add-comment">
+    <input type="text" placeholder="输入评论..." value="{{newComment}}" bindinput="onCommentInput"/>
+    <button bindtap="submitComment">提交</button>
+  </view>
+</view>
+
+
+
+<!-- <view class="contain">
+  <van-panel title="充电桩信息">
+    <view>内容</view>
+  </van-panel>
+</view> -->
 <view class="bottom">
   <view class="bottom_price">{{stationInfo.price}}</view>
   <view class="button_container">
     <button class="scan_button" style="width: fit-content" bind:tap="toScan">扫码充电</button>
+  </view>
+</view>
+<!-- <van-action-sheet custom-class="panel" show="{{ show1 }}" actions="{{ stationInfo }}" bind:close="onClose" title="充电桩信息">
+  <block class="contain chargingGun_list" wx:for="{{stationInfo.chargingGun}}" wx:key="id">
+    <view class="contain chargingGun">
+      <view class="state">
+        <view class="available">{{item.available}}available</view>
+        <view class="energy">{{item.energy}}%</view>
+      </view>
+      <view class="data">
+        <view class="id">编号：{{item.id}}</view>
+        <view class="power">最大功率：{{item.power}}kw</view>
+        <view class="type">type{{item.type}}</view>
+        <view class="mode">充电方式：{{item.mode}}</view>
+      </view>
+    </view>
+  </block>
+</van-action-sheet> -->
+<van-action-sheet custom-class="panel" show="{{ show1 }}" actions="{{ stationInfo }}" bind:close="onClose" title="充电桩信息">
+  <block class="contain chargingGun_list" wx:for="{{stationInfo.chargingGun}}" wx:key="id">
+    <view class="contain chargingGun" style="position: relative; left: 75rpx; top: 0rpx;">
+      <view class="state" style="width: 231rpx; height: 102rpx; display: flex; box-sizing: border-box">
+        <view class="available" wx:if="{{item.available  === true}}" style="position: relative; left: 25rpx; top: 0rpx;">
+          空闲
+        </view>
+        <view class="energy" style="position: relative; left: 20rpx; top: -1rpx">
+          {{item.energy}}%
+        </view>
+      </view>
+      <view class="data" style="position: relative; left: 170rpx; top: -108rpx">
+        <view class="id">
+          编号：{{item.id}}
+        </view>
+        <view class="power">
+          最大功率：{{item.power}}kw
+        </view>
+        <view wx:if="{{item.type  === 'SuperCharge'}}" class="type">
+          {{item.type}}
+        </view>
+        <view class="mode">
+          充电方式：{{item.mode}}
+        </view>
+      </view>
+    </view>
+  </block>
+</van-action-sheet>
+<!-- 底部扫码充电按钮 -->
+<view class="bottom">
+  <view class="bottom_price">{{stationInfo.price}}</view>
+  <view class="button_container">
+    <button class="scan_button" style="width: fit-content" bindtap="onScan">扫码充电</button>
   </view>
 </view>
