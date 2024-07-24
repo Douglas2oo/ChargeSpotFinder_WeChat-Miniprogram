@@ -1,3 +1,5 @@
+/* chargingDetail.wxss */
+
 .contain {
   display: flex;
   flex-direction: column;
@@ -6,10 +8,12 @@
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
   width: 90%;
-  margin-left: 5%;
+  margin-left: -5%;
   margin-bottom: 3%;
   height: fit-content;
 }
+
+
 
 .name {
   font-size: 18px;
@@ -95,12 +99,13 @@
 }
 
 .navigate_area,
-.star_area {
+.star-area {
   display: flex;
   align-items: center;
   flex-direction: column;
   margin-left: 20px;
 }
+
 
 .addFavorite,
 .distance {
@@ -127,6 +132,7 @@
 
 .working_time {
   font-size: 14px;
+  
 }
 
 .bottom {
@@ -135,22 +141,28 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  padding: 10px 5%;
+  border-radius: 20px;
+  border: #f0f0f0 1px solid;
+  margin-left: -5%;
+  padding: 10px;
   background-color: white;
   box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
 }
 
 .bottom_price {
+  display: flex;
+  justify-content: space-between;
   font-size: 20px;
   font-weight: bold;
   color: #37d055;
+  margin-left: 5%;
 }
 
 .scan_button {
   background-image: linear-gradient(to right, #95caa7, #00a527); 
   color: white;
   border-radius: 20px;
-  padding: 10rpx 20rpx;
+  
 }
 
 .button_container {
