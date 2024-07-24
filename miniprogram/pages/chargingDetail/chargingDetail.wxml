@@ -43,7 +43,8 @@
         <view class="faculity_list">
           <view wx:for="{{stationInfo.faculty}}" wx:key="*this" class="faculty_block">
             <view class="faculty_item">{{item}} |</view>
-          </view><view class="working_time">营业时间：{{stationInfo.workingTime}}</view>
+          </view>
+          <view class="working_time">营业时间：{{stationInfo.workingTime}}</view>
         </view>
         <view class="charging-state">
           <view wx:if="{{stationInfo.state.SuperCharge}}" class="state-super">
@@ -79,13 +80,44 @@
 
 <view class="contain">
   <van-panel title="充电桩信息">
-  <view>内容</view>
-</van-panel>
+    <view>内容</view>
+  </van-panel>
 </view>
 
+<!-- 评论区林之栋喜欢被插皮燕子 -->
+<view class="comments-section">
+  <text class="comments-title">评论区</text>
+  <block wx:for="{{comments}}" wx:key="index">
+    <view class="comment">
+      <image class="comment-avatar" src="{{item.userInfo.avatarUrl}}" />
+      <view class="comment-content">
+        <text class="comment-user">{{item.userInfo.nickName}}</text>
+        <text class="comment-time">{{item.time}}</text>
+        <view class="comment-text-wrapper">
+          <text class="comment-text">{{item.content}}</text>
+        </view>
+        <view class="comment-actions">
+          <button class="like-button" data-index="{{index}}" bindtap="toggleLikeComment">
+            {{item.liked ? '🤣' : '😀'}} {{item.likes}}
+          </button>
+          <button class="delete-button" data-index="{{index}}" bindtap="deleteComment">删除</button>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view class="add-comment">
+    <input type="text" placeholder="输入评论..." value="{{newComment}}" bindinput="onCommentInput"/>
+    <button bindtap="submitComment">提交</button>
+  </view>
+</view>
+
+
+
+<!-- 底部扫码充电按钮 -->
 <view class="bottom">
   <view class="bottom_price">{{stationInfo.price}}</view>
   <view class="button_container">
-    <button class="scan_button" style="width: fit-content" bind:tap="toScan">扫码充电</button>
+    <button class="scan_button" style="width: fit-content" bindtap="onScan">扫码充电</button>
   </view>
 </view>
