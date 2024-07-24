@@ -26,7 +26,7 @@ Page({
   onHide: function() {
     // 页面隐藏时保存搜索框位置
     const app = getApp();
-    app.globalData.searchBoxPosition = 'bottom';
+    app.globalData.searchBoxPosition = this.data.searchBoxPosition;
     this.setData({
       showResults: false
     });

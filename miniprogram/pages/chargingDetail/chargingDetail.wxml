@@ -133,7 +133,7 @@
 <view class="bottom">
   <view class="bottom_price">{{stationInfo.price}}</view>
   <view class="button_container">
-    <button class="scan_button" style="width: fit-content" bind:tap="toScan">扫码充电</button>
+    <button class="scan_button" style="width: fit-content" bindtap="onScan">扫码充电</button>
   </view>
 </view>
 <!-- <van-action-sheet custom-class="panel" show="{{ show1 }}" actions="{{ stationInfo }}" bind:close="onClose" title="充电桩信息">

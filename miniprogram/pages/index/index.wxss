@@ -75,17 +75,15 @@ input {
 }
 
 .sort-button {
-  padding: 10px;
-  background-color: rgba(213, 210, 28, 0);
-  color: #595757;
-  border-radius: 10px;
-  padding: 8px;
-  font-size: 15px;
+  font-size: 28rpx;
+  color: #666;
+  padding: 10rpx 20rpx;
+  border-radius: 20rpx;
 }
 
 .sort-button-active {
-  background-color: #f0f0f0;
-  color: #419955;
+  background: #a4d792;
+  color: #fff;
 }
 
 .tag-scroll {
