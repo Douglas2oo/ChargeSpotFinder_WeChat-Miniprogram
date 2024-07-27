@@ -77,7 +77,6 @@
     </view>
   </view>
 </view>
-
 <view class="contain" bind:tap="showGun">
   <view class="charging-state">
     <view wx:if="{{stationInfo.state.SuperCharge}}" class="state-super" bind:tap="showGun">
@@ -88,13 +87,64 @@
     </view>
   </view>
 </view>
-
 <view class="contain">
-  <van-panel title="充电桩信息">
-    <view>内容</view>
-  </van-panel>
+<van-panel header-class="fee_title" custom-class="fee_contain" style="margin-left: -14%;">
+  <view slot="header" style="font-weight: bold;">
+    <text>充电费</text>
+  </view>
+<van-grid direction="horizontal" column-num="3" custom-class="table">
+  
+  <van-grid-item  content-class="normal_content"><view slot="text">
+    价格(元/度)
+  </view></van-grid-item>
+  <van-grid-item content-class="period period_head"><view slot="text">
+    充电时段
+  </view></van-grid-item>
+  <van-grid-item custom-class="membership" content-class="membership_content " custom-class="top-right"><view slot="text">
+    会员价(元/度)
+  </view></van-grid-item>
+  
+</van-grid>
+<van-grid direction="horizontal" column-num="3">
+  
+  <van-grid-item content-class="normal_content" text-class="now"><view slot="text">
+    <van-tag type="success" custom-class="tag" >当前</van-tag>1.23
+  </view></van-grid-item>
+  <van-grid-item content-class="period timeperiod" text-class="period_number"><view slot="text">
+    {{timePeriod}}
+  </view></van-grid-item>
+  <van-grid-item custom-class="membership" content-class="membership_content" text-class="membership_text now"><view slot="text">
+    1.15
+  </view></van-grid-item>
+  
+</van-grid>
+<van-grid direction="horizontal" column-num="3">
+  
+  <van-grid-item content-class="normal_content" text-class="now"><view slot="text">
+    1.41
+  </view></van-grid-item>
+  <van-grid-item content-class="period timeperiod" text-class="period_number"><view slot="text">
+    {{nextPeriod}}
+  </view></van-grid-item>
+  <van-grid-item custom-class="membership" content-class="membership_content" text-class="membership_text now"><view slot="text">
+    1.20
+  </view></van-grid-item>
+  
+</van-grid>
+<view class="showall">
+  全部时段 >
 </view>
 
+  <!-- <view class="fee fee_header">
+    <view class="fee normal">充电时段 价格(元/度)</view>
+    <view class="fee membership">会员价(元/度)</view>
+  </view>
+  <view class="fee">
+    <view class="left normal"></view>
+    <view class="right membership"></view>
+  </view> -->
+</van-panel>
+</view>
 <!-- 评论区林之栋喜欢被插皮燕子 -->
 <view class="comments-section">
   <text class="comments-title">评论区</text>
@@ -116,20 +166,11 @@
       </view>
     </view>
   </block>
-
   <view class="add-comment">
-    <input type="text" placeholder="输入评论..." value="{{newComment}}" bindinput="onCommentInput"/>
+    <input type="text" placeholder="输入评论..." value="{{newComment}}" bindinput="onCommentInput" />
     <button bindtap="submitComment">提交</button>
   </view>
 </view>
-
-
-
-<!-- <view class="contain">
-  <van-panel title="充电桩信息">
-    <view>内容</view>
-  </van-panel>
-</view> -->
 <view class="bottom">
   <view class="bottom_price">{{stationInfo.price}}</view>
   <view class="button_container">
@@ -154,27 +195,35 @@
 </van-action-sheet> -->
 <van-action-sheet custom-class="panel" show="{{ show1 }}" actions="{{ stationInfo }}" bind:close="onClose" title="充电桩信息">
   <block class="contain chargingGun_list" wx:for="{{stationInfo.chargingGun}}" wx:key="id">
-    <view class="contain chargingGun" style="position: relative; left: 75rpx; top: 0rpx;">
+    <view class="contain chargingGun" style="position: relative; left: 75rpx; top: 0rpx; padding: 4% 10% 0px 10%;">
       <view class="state" style="width: 231rpx; height: 102rpx; display: flex; box-sizing: border-box">
-        <view class="available" wx:if="{{item.available  === true}}" style="position: relative; left: 25rpx; top: 0rpx;">
+        <van-circle value="{{ item.energy }}" color="{{ item.available === false ? gradientColor2 : gradientColor1 }}" style="position: relative; left: -30rpx; top: 0rpx;" size="90" stroke-width="6" />
+        <view class="available" wx:if="{{item.available  === true}}" style="position: relative; left: 30rpx; top: -130rpx;">
           空闲
         </view>
-        <view class="energy" style="position: relative; left: 20rpx; top: -1rpx">
+        <view class="available_false" wx:else="{{item.available  === true}}" style="position: relative; left: 15rpx; top: -130rpx;">
+          占用中
+        </view>
+        <view class="blank_space"></view>
+        <view class="energy {{ item.available === false ? 'available_false' : '' }} {{ item.energy === 100 ? 'hundred' : '' }}">
           {{item.energy}}%
         </view>
       </view>
-      <view class="data" style="position: relative; left: 170rpx; top: -108rpx">
+      <view class="data" style="position: relative; left: 190rpx; top: -80rpx; margin-bottom: -5%">
         <view class="id">
-          编号：{{item.id}}
+          <text>编号：</text>
+          {{item.id}}
         </view>
         <view class="power">
-          最大功率：{{item.power}}kw
+          <text>最大功率：</text>
+          {{item.power}}kw
         </view>
         <view wx:if="{{item.type  === 'SuperCharge'}}" class="type">
-          {{item.type}}
+          <van-tag plain type="success">{{item.type}}</van-tag>
         </view>
         <view class="mode">
-          充电方式：{{item.mode}}
+          <text>充电方式：</text>
+          {{item.mode}}
         </view>
       </view>
     </view>
@@ -182,7 +231,10 @@
 </van-action-sheet>
 <!-- 底部扫码充电按钮 -->
 <view class="bottom">
-  <view class="bottom_price">{{stationInfo.price}}</view>
+  <view class="left">
+    <view class="bottom_price">{{stationInfo.price}}</view>
+    <view class="time_period">当前时段： {{timePeriod}}</view>
+  </view>
   <view class="button_container">
     <button class="scan_button" style="width: fit-content" bindtap="onScan">扫码充电</button>
   </view>

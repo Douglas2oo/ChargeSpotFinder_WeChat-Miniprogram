@@ -13,8 +13,6 @@
   height: fit-content;
 }
 
-
-
 .name {
   font-size: 18px;
   font-weight: bold;
@@ -147,6 +145,7 @@
   padding: 10px;
   background-color: white;
   box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+  z-index: 100;
 }
 
 .bottom_price {
@@ -177,6 +176,8 @@
   border-top: 1px solid #ccc;
   padding-top: 20rpx;
   margin-bottom: 150rpx; /* 确保评论区上方有足够的空间 */
+  width: 85%;
+  margin-left: -5%;
 }
 
 .comments-title {
@@ -265,6 +266,7 @@
   background-color: transparent;
   border: none;
   margin-right: 50rpx;
+  /* position: absolute; */
 }
 
 .delete-button {
@@ -276,10 +278,15 @@
 
 .state {
   color: #34c500;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.available_false{
+  color: #e3b989;
 }
 
 .chargingGun{
@@ -296,8 +303,153 @@
 
 .panel {
   background-color: #f0f0f0!important;
+  position: fixed!important;
+  width: 100%!important;
+  z-index: 101!important;
 }
 
 .panel .data {
-  font-size: 14px;
+  font-size: 12px;
+}
+
+text {
+  color:#666;
+}
+
+.blank_space {
+  height: 5%;
+}
+
+.time_period {
+  font-size: 10px;
+  color: #666;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15rpx;
+}
+
+.fee_title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.energy {
+  position: relative; left: 30rpx; top: -130rpx;
+}
+
+.hundred {
+  position: relative; left: 20rpx; top: -130rpx;
+}
+
+.fee_contain {
+  display: flex;
+  flex-direction: column;
+  /* box-sizing: border-box; */
+  padding: 20px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  width: 86%;
+  margin-bottom: 3%;
+  margin-left: 8%;
+  height: fit-content;
+  border: none;
+  margin-bottom: 0;
+}
+
+.fee {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.fee_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+
+.normal {
+  background-color: #f0f0f0!important;
+  text-wrap: nowrap;
+  font-size: 12px;
+  width: 50%;
+}
+
+.membership {
+  background-color: #b1deac!important;
+  text-wrap: nowrap;
+  font-size: 12px;
+  width: 50%;
+}
+
+.membership_content {
+  background: linear-gradient(to right, #b1deac, #ffffff) !important;
+  font-weight: bold;
+}
+
+.membership_text {
+  color: #00a527!important;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.table {
+  width: 100%!important;
+}
+
+.normal_content {
+  background: linear-gradient(to right, #ffffff, #f0f0f0) !important;
+  font-weight: bold;
+  padding-bottom: 15px!important;
+  padding-top: 15px!important;
+}
+
+.period {
+  font-weight: bold;
+  text-align: center;
+}
+
+.timeperiod, .normal_content, .membership_content {
+  /* padding-left:0px!important; 
+  padding-right: 0px!important; */
+  /* padding-top: 20px!important;
+  padding-bottom: 20px!important; */
+  border: none;
+}
+
+.now {
+  font-size: 18px!important;
+}
+
+.tag {
+  margin-bottom: 5%!important;
+}
+
+.period_number {
+  font-size: 12px!important;
+
+}
+
+.showall {
+  display: flex;
+  justify-content: center; /* 水平方向居中对齐 */
+  text-align: center; /* 垂直方向的文本对齐 */
+  color: #666;
+  font-size: 10px;
+  margin-top: 20px;
+}
+
+.top-right {
+  border-radius: 0 10px 0 0; /* 右上角圆角10px */
+}
+
+.period_head {
+  display: inline-block;
+  border: 1px #f0f0f0 solid ;
 }

@@ -118,9 +118,41 @@ App({
             power: 250,
             type: 'SuperCharge',
             mode: '直流',
+            energy: 75,
+            available: false,
+          },
+          {
+            id: 246542322354218489,
+            power: 250,
+            type: 'SuperCharge',
+            mode: '直流',
             energy: 100,
             available: true,
-          }
+          },
+          {
+            id: 246542322354218489,
+            power: 250,
+            type: 'SuperCharge',
+            mode: '直流',
+            energy: 75,
+            available: false,
+          },
+          {
+            id: 246542322354218489,
+            power: 250,
+            type: 'SuperCharge',
+            mode: '直流',
+            energy: 100,
+            available: true,
+          },
+          {
+            id: 246542322354218489,
+            power: 250,
+            type: 'SuperCharge',
+            mode: '直流',
+            energy: 75,
+            available: false,
+          },
         ]
       },
       {

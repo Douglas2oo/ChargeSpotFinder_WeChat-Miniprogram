@@ -5,7 +5,13 @@
   "usingComponents": {
   "van-panel": "@vant/weapp/panel/index",
   "van-action-sheet": "@vant/weapp/action-sheet/index",
-  "van-tag": "@vant/weapp/tag/index"
+  "van-tag": "@vant/weapp/tag/index",
+  "mpProgress": "/miniprogram_npm/mp-progress/component/mp-progress",
+  "canvas-ring": "/components/canvas-ring/canvas-ring",
+  "circle": "/components/circle/circle",
+  "van-circle": "@vant/weapp/circle/index",
+  "van-grid": "@vant/weapp/grid/index",
+  "van-grid-item": "@vant/weapp/grid-item/index"
 }
 
 }
