@@ -10,6 +10,8 @@ Page({
     show2: false,
     timePeriod: "", // 用于存储当前时间段
     nextPeriod: "", // 用于存储下一个时间段
+    currentPrice: [0, 0], // 用于存储当前电价
+    nextPrice: [0, 0], // 用于存储当前电价
     gradientColor1: {
       '0%': '#80d783',
       '100%': '#34c500',
@@ -18,6 +20,7 @@ Page({
       '0%': '#d28c3b',
       '100%': '#e3b989',
     },
+    showFee: false,
   },
 
   onLoad: function (options) {
@@ -61,7 +64,9 @@ Page({
   
     this.setData({
       timePeriod: period,
-      nextPeriod: this.nextPeriod
+      nextPeriod: this.nextPeriod,
+      currentPrice: this.data.stationInfo.fee[period] || [0, 0],
+      nextPrice: this.data.stationInfo.fee[this.nextPeriod] || [0, 0],
     });
   },
 
@@ -234,6 +239,15 @@ Page({
 
   showGun: function () {
     this.setData({ show1: true });
+  },
+  //----------------------------------------------------------------------
+
+  //费用展示面板控制-------------------------------------------------------
+  showFee: function () {
+    this.setData({ showFee: true });
+  },
+  closeFee() {
+    this.setData({ showFee: false });
   },
   //----------------------------------------------------------------------
 });

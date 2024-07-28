@@ -88,54 +88,84 @@
   </view>
 </view>
 <view class="contain">
-<van-panel header-class="fee_title" custom-class="fee_contain" style="margin-left: -14%;">
-  <view slot="header" style="font-weight: bold;">
-    <text>充电费</text>
-  </view>
-<van-grid direction="horizontal" column-num="3" custom-class="table">
-  
-  <van-grid-item  content-class="normal_content"><view slot="text">
-    价格(元/度)
-  </view></van-grid-item>
-  <van-grid-item content-class="period period_head"><view slot="text">
-    充电时段
-  </view></van-grid-item>
-  <van-grid-item custom-class="membership" content-class="membership_content " custom-class="top-right"><view slot="text">
-    会员价(元/度)
-  </view></van-grid-item>
-  
-</van-grid>
-<van-grid direction="horizontal" column-num="3">
-  
-  <van-grid-item content-class="normal_content" text-class="now"><view slot="text">
-    <van-tag type="success" custom-class="tag" >当前</van-tag>1.23
-  </view></van-grid-item>
-  <van-grid-item content-class="period timeperiod" text-class="period_number"><view slot="text">
-    {{timePeriod}}
-  </view></van-grid-item>
-  <van-grid-item custom-class="membership" content-class="membership_content" text-class="membership_text now"><view slot="text">
-    1.15
-  </view></van-grid-item>
-  
-</van-grid>
-<van-grid direction="horizontal" column-num="3">
-  
-  <van-grid-item content-class="normal_content" text-class="now"><view slot="text">
-    1.41
-  </view></van-grid-item>
-  <van-grid-item content-class="period timeperiod" text-class="period_number"><view slot="text">
-    {{nextPeriod}}
-  </view></van-grid-item>
-  <van-grid-item custom-class="membership" content-class="membership_content" text-class="membership_text now"><view slot="text">
-    1.20
-  </view></van-grid-item>
-  
-</van-grid>
-<view class="showall">
-  全部时段 >
-</view>
-
-  <!-- <view class="fee fee_header">
+  <van-panel header-class="fee_title" custom-class="fee_contain" style="margin-left: -14%;">
+    <view slot="header" style="font-weight: bold;">
+      <text>充电费</text>
+    </view>
+    <van-grid direction="horizontal" column-num="3" custom-class="table">
+      <van-grid-item content-class="normal_content">
+        <view slot="text">价格(元/度)</view>
+      </van-grid-item>
+      <van-grid-item content-class="period period_head">
+        <view slot="text">充电时段</view>
+      </van-grid-item>
+      <van-grid-item custom-class="membership" content-class="membership_content " custom-class="top-right">
+        <view slot="text">会员价(元/度)</view>
+      </van-grid-item>
+    </van-grid>
+    <van-grid direction="horizontal" column-num="3">
+      <van-grid-item custom-class="normal" content-class="normal_content" text-class="now">
+        <view slot="text">
+          <van-tag type="success" custom-class="tag">当前</van-tag>
+          {{currentPrice[1]}}
+        </view>
+      </van-grid-item>
+      <van-grid-item  content-class="period timeperiod" text-class="period_number">
+        <view slot="text">{{timePeriod}}</view>
+      </van-grid-item>
+      <van-grid-item custom-class="membership" content-class="membership_content" text-class="membership_text now">
+        <view slot="text">{{currentPrice[0]}}</view>
+      </van-grid-item>
+    </van-grid>
+    <van-grid direction="horizontal" column-num="3">
+      <van-grid-item content-class="normal_content" text-class="now">
+        <view slot="text">{{nextPrice[1]}}</view>
+      </van-grid-item>
+      <van-grid-item content-class="period timeperiod" text-class="period_number">
+        <view slot="text">{{nextPeriod}}</view>
+      </van-grid-item>
+      <van-grid-item custom-class="membership" content-class="membership_content" text-class="membership_text now">
+        <view slot="text">{{nextPrice[0]}}</view>
+      </van-grid-item>
+    </van-grid>
+    <view class="showall" bind:tap="showFee">全部时段 ></view>
+    <van-action-sheet custom-class="panel fee_panel" show="{{ showFee }}" actions="{{ stationInfo.fee }}" bind:close="closeFee" title="价格详情">
+      <van-grid direction="horizontal" column-num="3" custom-class="table">
+        <van-grid-item content-class="normal_content">
+          <view slot="text">价格(元/度)</view>
+        </van-grid-item>
+        <van-grid-item content-class="period period_head">
+          <view slot="text">充电时段</view>
+        </van-grid-item>
+        <van-grid-item custom-class="membership" content-class="membership_content " custom-class="top-right">
+          <view slot="text">会员价(元/度)</view>
+        </van-grid-item>
+      </van-grid>
+        <view class="fee_block">
+        <block wx:for="{{stationInfo.fee}}" wx:key="index" >
+        <van-grid direction="horizontal" column-num="3">
+          <van-grid-item content-class="normal_content" text-class="now">
+            <view slot="text">{{item[1]}}</view>
+          </van-grid-item>
+          <van-grid-item content-class="period timeperiod" text-class="period_number">
+            <view slot="text">{{index}}</view>
+          </van-grid-item>
+          <van-grid-item custom-class="membership" content-class="membership_content" text-class="membership_text now">
+            <view slot="text">{{item[0]}}</view>
+          </van-grid-item>
+        </van-grid>
+      </block>
+      </view>
+      
+      
+      <view class="contain explaination_contain">
+        <view class="fee_explanation">
+          <van-icon name="warning-o" />
+          由于服务运营成本及电价峰平谷差异，充电服务采用分时段计费，不同枪功率存在定价差异
+        </view>
+      </view>
+    </van-action-sheet>
+    <!-- <view class="fee fee_header">
     <view class="fee normal">充电时段 价格(元/度)</view>
     <view class="fee membership">会员价(元/度)</view>
   </view>
@@ -143,7 +173,7 @@
     <view class="left normal"></view>
     <view class="right membership"></view>
   </view> -->
-</van-panel>
+  </van-panel>
 </view>
 <!-- 评论区林之栋喜欢被插皮燕子 -->
 <view class="comments-section">

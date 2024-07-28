@@ -423,6 +423,8 @@ text {
   border: none;
 }
 
+
+
 .now {
   font-size: 18px!important;
 }
@@ -451,5 +453,30 @@ text {
 
 .period_head {
   display: inline-block;
-  border: 1px #f0f0f0 solid ;
+}
+
+.fee_explanation{
+  font-size: 10px;
+  color: #666;
+}
+
+.explaination_contain {
+  margin-left: 0%; 
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 111;
+}
+
+.fee_panel {
+  background-color: white!important;
+  z-index: 110!important;
+}
+
+.table {
+  margin-bottom: -4px; /* 增加表格下方的间距 */
+}
+
+.fee_block {
+  margin-bottom: 12%;
 }
