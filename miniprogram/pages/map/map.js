@@ -52,6 +52,11 @@ Page({
                       success(settingRes) {
                         if (settingRes.authSetting['scope.userLocation']) {
                           that.getUserLocation();
+                        } else {
+                          wx.showToast({
+                            title: '未授权位置信息',
+                            icon: 'none'
+                          });
                         }
                       }
                     });
@@ -66,20 +71,22 @@ Page({
       }
     });
   },
-
+  
   getUserLocation: function() {
     const that = this;
     wx.getLocation({
       type: 'wgs84',
       success(res) {
+        console.log('位置信息获取成功', res);
         that.setData({
           latitude: res.latitude,
           longitude: res.longitude
         });
         that.loadNearbyChargingStations();
-        that.getCity(res.latitude, res.longitude); // 获取城市信息
+        //that.getCity(res.latitude, res.longitude); // 获取城市信息
       },
-      fail() {
+      fail(err) {
+        console.error('位置信息获取失败', err);
         wx.showToast({
           title: '无法获取位置信息',
           icon: 'none'
@@ -88,31 +95,31 @@ Page({
     });
   },
 
-  getCity: function(latitude, longitude) {
-    const that = this;
-    const key = 'YOUR_TENCENT_LOCATION_SERVICE_KEY'; // 替换为你的腾讯位置服务的key
-    wx.request({
-      url: `https://apis.map.qq.com/ws/geocoder/v1/?location=${latitude},${longitude}&key=${key}`,
-      timeout: 10000, // 设置超时时间为10秒
-      success: function(res) {
-        if (res.data.status === 0) {
-          const city = res.data.result.address_component.city;
-          that.setData({
-            city: city
-          });
-        } else {
-          console.error('逆地理编码失败：', res.data.message);
-        }
-      },
-      fail: function(error) {
-        console.error('请求失败：', error);
-        wx.showToast({
-          title: '请求失败，请检查网络',
-          icon: 'none'
-        });
-      }
-    });
-  },
+  // getCity: function(latitude, longitude) {
+  //   const that = this;
+  //   const key = '	MW4BZ-V7LK7-FC7XR-P6CPE-ATTRZ-ICBLX';
+  //   wx.request({
+  //     url: `https://apis.map.qq.com/ws/geocoder/v1/?location=${latitude},${longitude}&key=${key}`,
+  //     timeout: 10000, // 设置超时时间为10秒
+  //     success: function(res) {
+  //       if (res.data.status === 0) {
+  //         const city = res.data.result.address_component.city;
+  //         that.setData({
+  //           city: city
+  //         });
+  //       } else {
+  //         console.error('逆地理编码失败：', res.data.message);
+  //       }
+  //     },
+  //     fail: function(error) {
+  //       console.error('请求失败：', error);
+  //       wx.showToast({
+  //         title: '请求失败，请检查网络',
+  //         icon: 'none'
+  //       });
+  //     }
+  //   });
+  // },
 
   stationsData: [],
 
