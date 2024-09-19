@@ -1,4 +1,3 @@
-import MpProgress from "../../miniprogram_npm/mp-progress/progress.min";
 Page({
   data: {
     stationInfo: null,
